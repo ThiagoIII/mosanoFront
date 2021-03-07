@@ -5,6 +5,7 @@ import List from './components/List'
 import { AppContext } from './context/context'
 import { useTranslation } from 'react-i18next'
 import './translations/i18n'
+import i18n from 'i18next'
 
 function App() {
     const {
@@ -18,7 +19,7 @@ function App() {
 
     React.useEffect(() => {
         try {
-            fetch('http://localhost:3333/getCountriesList')
+            fetch('https://still-meadow-87389.herokuapp.com/getCountriesList')
                 .then(res => res.json())
                 .then(data => setList(data))
         } catch (error) {
@@ -27,9 +28,21 @@ function App() {
             )
         }
     }, [])
-
+    const handleOnclick = e => {
+        e.preventDefault()
+        i18n.changeLanguage(e.target.value)
+    }
     return (
         <main>
+            <section>
+                <button value="pt" onClick={handleOnclick}>
+                    Português
+                </button>
+                <button value="en" onClick={handleOnclick}>
+                    English
+                </button>
+            </section>
+
             <Form list={list} />
             <span id="legend">
                 {console.log(firstName)}

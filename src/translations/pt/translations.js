@@ -6,6 +6,5 @@ export const TRANSLATIONS_PT = {
     nameHere: 'nome aqui',
     countries: 'Selecione um país',
     save: 'Salvar',
-    msg:
-        'Por favor insira suas informações no formulário acima e pressione salvar.'
+    msg: 'Por favor insira suas informações e pressione salvar.'
 }

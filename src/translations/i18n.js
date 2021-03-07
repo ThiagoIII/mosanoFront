@@ -17,5 +17,3 @@ i18n.use(LanguageDetector)
             }
         }
     })
-
-i18n.changeLanguage('en')

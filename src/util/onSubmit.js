@@ -66,7 +66,10 @@ async function validateData(dataToValidate, dispatch) {
         headers: { 'Content-Type': 'application/json' }
     }
     try {
-        await fetch(`http://localhost:3333/validateUserData`, config)
+        await fetch(
+            `https://still-meadow-87389.herokuapp.com/validateUserData`,
+            config
+        )
             .then(res => res.json())
             .then(data => addUserAction(dispatch, data))
         return alert('user data validated ok')

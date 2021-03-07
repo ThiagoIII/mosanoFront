@@ -6,5 +6,5 @@ export const TRANSLATIONS_EN = {
     nameHere: 'name here',
     countries: 'Select a country',
     save: 'Save',
-    msg: 'Please enter your information in the form above and press save.'
+    msg: 'Please enter your information and press save.'
 }

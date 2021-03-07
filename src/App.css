@@ -72,6 +72,22 @@ main {
     width: 100%;
 }
 
+main > section:first-child {
+    position: absolute;
+    display: flex;
+    top: 5%;
+    left: 10%;
+    gap: 1rem;
+    width: auto;
+}
+
+section > button {
+    border: solid var(--border-tichkness) var(--main-border-font-color);
+    color: var(--main-border-font-color);
+    background-color: white;
+    width: 5rem;
+}
+
 #legend {
     grid-area: span;
     background-color: rgb(225, 250, 233);

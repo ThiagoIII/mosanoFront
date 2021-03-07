@@ -6,7 +6,6 @@ import { AppContext } from '../context/context'
 import { onSubmit } from '../util/onSubmit'
 import { schema } from '../schema/yupSchema'
 import { useTranslation } from 'react-i18next'
-
 import '../translations/i18n'
 const Form = ({ list }) => {
     const { dispatch } = React.useContext(AppContext)
