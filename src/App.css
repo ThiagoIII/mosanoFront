@@ -185,3 +185,34 @@ footer {
     font-size: 2rem;
     color: var(--main-border-font-color);
 }
+
+#loading {
+    position: absolute;
+    animation: loading 1.3s;
+    color: var(--main-border-font-color);
+    font-weight: bold;
+}
+
+@keyframes loading {
+    0% {
+        top: 60%;
+        left: 30%;
+    }
+    25% {
+        top: 10%;
+        left: 30%;
+    }
+
+    50% {
+        top: 60%;
+        left: 40%;
+    }
+    75% {
+        top: 10%;
+        left: 50%;
+    }
+    100% {
+        top: 60%;
+        left: 50%;
+    }
+}

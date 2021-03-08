@@ -4,7 +4,6 @@ export const addUser = (state, action) => {
             const {
                 payload: { data, dayMonthAge, id }
             } = action
-            console.log('inside adduser', state)
             return {
                 usersList: [...state.usersList, data], // state.userList.concat(action.payload)
                 userSubmitted: data,

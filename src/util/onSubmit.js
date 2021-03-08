@@ -2,10 +2,16 @@ import { addUserAction } from '../context/actions'
 import moment from 'moment'
 import { v4 as uuidv4 } from 'uuid'
 
-export const onSubmit = async (dataFromForm, dispatch) => {
+export const onSubmit = (dataFromForm, dispatch, setLoading) => {
+    setLoading(true)
     let { date: inputDay, months: inputMonth, years: inputYear } = moment(
         dataFromForm?.birthday
     ).toObject()
+
+    let a = moment([inputYear, inputMonth, inputDay])
+    let b = moment()
+    let currentAge = b.diff(a, 'years') //checking for date past current date
+
     let month = dataFromForm?.birthday.split('/')[0]
     let day = dataFromForm?.birthday.split('/')[1]
     if (day === '29' && month === '02') {
@@ -23,10 +29,7 @@ export const onSubmit = async (dataFromForm, dispatch) => {
         }
     }
 
-    let a = moment([inputYear, inputMonth, inputDay])
-    let b = moment()
     let diffDays = b.diff(a, 'days') //checking for date past current date
-    let currentAge = b.diff(a, 'years') //checking for date past current date
 
     if (
         //checking for numbers not allowed for day, month and year
@@ -55,11 +58,12 @@ export const onSubmit = async (dataFromForm, dispatch) => {
             age: currentAge
         }
     }
+
     console.log('dataToValidate', dataToValidate)
-    validateData(dataToValidate, dispatch)
+    validateData(dataToValidate, dispatch, setLoading)
 }
 
-async function validateData(dataToValidate, dispatch) {
+async function validateData(dataToValidate, dispatch, setLoading) {
     const config = {
         method: 'POST',
         body: JSON.stringify(dataToValidate),
@@ -71,8 +75,11 @@ async function validateData(dataToValidate, dispatch) {
             config
         )
             .then(res => res.json())
-            .then(data => addUserAction(dispatch, data))
-        return alert('user data validated ok')
+            .then(data => {
+                addUserAction(dispatch, data)
+                setLoading(false)
+            })
+        return
     } catch (error) {
         return alert(
             `Error trying to validate user data, please try again, error: ${error}`

@@ -28,10 +28,14 @@ function App() {
             )
         }
     }, [])
+
+    //if (loading) return <Loading setLoading={setLoading} />
+
     const handleOnclick = e => {
         e.preventDefault()
         i18n.changeLanguage(e.target.value)
     }
+
     return (
         <main>
             <section>
@@ -42,7 +46,6 @@ function App() {
                     English
                 </button>
             </section>
-
             <Form list={list} />
             <span id="legend">
                 {console.log(firstName)}
@@ -52,6 +55,7 @@ function App() {
                       }`
                     : t('msg')}
             </span>
+
             <List />
 
             <footer>Thiago Terceiro</footer>
