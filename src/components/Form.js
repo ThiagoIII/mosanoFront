@@ -10,11 +10,15 @@ import '../translations/i18n'
 const Form = ({ list }) => {
     const { dispatch } = React.useContext(AppContext)
     const [loading, setLoading] = React.useState(false)
+
     const { t } = useTranslation()
+
     const { register, handleSubmit, errors } = useForm({
         resolver: yupResolver(schema)
     })
+
     if (loading) return <h1>Validating data</h1>
+
     return (
         <section id="form">
             <form
